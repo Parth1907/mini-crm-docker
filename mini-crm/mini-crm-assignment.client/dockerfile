@@ -1,0 +1,32 @@
+# Stage 1: Build the React (Vite) app
+FROM node:20-alpine AS build
+WORKDIR /app
+
+# Copy package files and install
+COPY package*.json ./
+RUN npm install
+
+# Copy all source files
+COPY . .
+
+# Accept API base URL from Docker build argument
+ARG VITE_API_BASE_URL
+ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
+
+# Build the app for production
+ENV NODE_ENV=production
+ENV BUILD_ENV=docker
+RUN npm run build
+
+# Stage 2: Serve using Nginx
+FROM nginx:alpine
+WORKDIR /usr/share/nginx/html
+
+# Copy build output to nginx html folder
+COPY --from=build /app/dist .
+
+# Expose Nginx port
+EXPOSE 80
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]

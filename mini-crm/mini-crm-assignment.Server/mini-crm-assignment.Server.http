@@ -1,0 +1,62 @@
+@mini-crm-assignment.Server_HostAddress = https://localhost:7184
+
+###
+GET {{mini-crm-assignment.Server_HostAddress}}/api/contacts
+
+###
+
+POST {{mini-crm-assignment.Server_HostAddress}}/api/contacts
+Content-Type: application/json
+
+{
+  //Contact
+}
+
+###
+
+DELETE {{mini-crm-assignment.Server_HostAddress}}/api/contacts/{id}
+
+###
+
+GET {{mini-crm-assignment.Server_HostAddress}}/api/contacts/{id}
+
+###
+
+PUT {{mini-crm-assignment.Server_HostAddress}}/api/contacts/{id}
+Content-Type: application/json
+
+{
+  //Guid
+}
+
+###
+
+GET {{mini-crm-assignment.Server_HostAddress}}/api/customers
+
+###
+
+POST {{mini-crm-assignment.Server_HostAddress}}/api/customers
+Content-Type: application/json
+
+{
+  //Customer
+}
+
+###
+
+DELETE {{mini-crm-assignment.Server_HostAddress}}/api/customers/{id}
+
+###
+
+GET {{mini-crm-assignment.Server_HostAddress}}/api/customers/{id}
+
+###
+
+PUT {{mini-crm-assignment.Server_HostAddress}}/api/customers/{id}
+Content-Type: application/json
+
+{
+  //Customer
+}
+
+###

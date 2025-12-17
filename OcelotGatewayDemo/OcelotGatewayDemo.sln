@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36623.8 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcelotGatewayDemo", "OcelotGatewayDemo.csproj", "{80126079-2CE0-4196-B0EF-2EB8A1541F86}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80126079-2CE0-4196-B0EF-2EB8A1541F86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80126079-2CE0-4196-B0EF-2EB8A1541F86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80126079-2CE0-4196-B0EF-2EB8A1541F86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80126079-2CE0-4196-B0EF-2EB8A1541F86}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D89751D-7EDC-412C-817B-9A883BB8D25F}
+	EndGlobalSection
+EndGlobal

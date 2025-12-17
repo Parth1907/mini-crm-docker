@@ -1,0 +1,20 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "server", // This will be the Docker service name of your backend API
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete", "OPTIONS" ]
+    }
+    // Add more routes for other backend services if you have them
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5000" // Or whatever port your Ocelot gateway runs on
+  }
+}

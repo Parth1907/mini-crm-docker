@@ -1,0 +1,63 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrong@Passw0rd
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql-data:/var/opt/mssql
+    networks:
+      - mini-crm-network
+
+  server:
+    build:
+      context: ./mini-crm/mini-crm-assignment.Server
+      dockerfile: Dockerfile
+    container_name: mini-crm-server
+    expose:
+      - "8080"
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__mini_crm_assignmentServerContext=Data Source=sqlserver,1433;User ID=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True;Encrypt=False;
+    depends_on:
+      - sqlserver
+    networks:
+      - mini-crm-network
+
+  ocelot-gateway:
+    build: 
+        context: ./OcelotGatewayDemo
+        dockerfile: Dockerfile
+    container_name: ocelot-gateway
+    ports:
+        - "5000:80"
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+    depends_on:
+      - server
+    networks:
+      - mini-crm-network
+
+  client:
+    build:
+      context: ./mini-crm/mini-crm-assignment.client
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: http://localhost:5000/api
+    container_name: mini-crm-client
+    ports:
+      - "5173:80"
+    depends_on:
+      - ocelot-gateway
+    networks:
+      - mini-crm-network
+
+networks:
+  mini-crm-network:
+    driver: bridge
+
+volumes:
+  sql-data:
